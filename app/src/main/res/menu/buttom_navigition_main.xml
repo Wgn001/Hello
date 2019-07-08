@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:id="@+id/action_msg" android:icon="@drawable/tab_new_unsel"
+            android:title="消息"/>
+        <item android:id="@+id/action_linkman" android:icon="@drawable/tab_contact_unsel"
+            android:title="通讯录"/>
+        <item android:id="@+id/action_find" android:icon="@drawable/tab_fx_unsel"
+            android:title="发现"/>
+        <item android:id="@+id/action_mine" android:icon="@drawable/tab_my_unsel"
+            android:title="我的"/>
+</menu>
