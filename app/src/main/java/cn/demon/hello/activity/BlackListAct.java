@@ -3,6 +3,7 @@ package cn.demon.hello.activity;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -20,7 +21,6 @@ public class BlackListAct extends AppCompatActivity implements View.OnClickListe
     private ImageView ig_return_title;
     private RecyclerView rv_blacklist;
     private List<Person> personList;
-    private LinkAdapter linkAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +30,9 @@ public class BlackListAct extends AppCompatActivity implements View.OnClickListe
         }
         setContentView(R.layout.activity_black_list);
         initView();
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        rv_blacklist.setLayoutManager(layoutManager);
-        linkAdapter=new LinkAdapter(personList);
-        rv_blacklist.setAdapter(linkAdapter);
+
+
+
     }
     private void initView() {
         ig_return_title=findViewById(R.id.ig_return_title);
@@ -60,6 +59,7 @@ public class BlackListAct extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
 }
 
 

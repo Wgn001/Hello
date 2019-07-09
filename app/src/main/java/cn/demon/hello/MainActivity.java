@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,11 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.demon.hello.bean.Login;
 import cn.demon.hello.bean.Person;
 import cn.demon.hello.fragment.FindFragment;
 import cn.demon.hello.fragment.LinkFragment;
@@ -26,9 +24,9 @@ import cn.demon.hello.fragment.MyFragment;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private List<Fragment> fragmentList;
-    private List<Person> personList;
     private ViewPager viewPager;
     private BottomNavigationView btnNav;
+
 
 
     @Override
@@ -111,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentList.add(new MessageFragment());
             fragmentList.add(new LinkFragment());
             fragmentList.add(new FindFragment());
-            fragmentList.add(new MyFragment());
+            fragmentList.add(MyFragment.newInstance(getIntent().getBundleExtra("intent_login")));
     }
 
     /**

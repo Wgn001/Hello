@@ -17,18 +17,26 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.Set;
 
 import cn.demon.hello.R;
+import cn.demon.hello.Util.HttpUtil;
+import cn.demon.hello.Util.SharedPreferencesUtil;
+import cn.demon.hello.Util.okHttpUtil;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
-public class SettingAct extends AppCompatActivity implements View.OnClickListener {
+public class SettingAct extends AppCompatActivity implements View.OnClickListener, Callback {
+
+    private static final String TAG = "SettingAct";
 
     private Button btn_logout;
     private TextView tv_save, tv_title_name;
     private RelativeLayout rl_change_password, rl_privacy, rl_clear_buffer,rl_new_message;
     private ImageView ig_return_title;
     private Dialog dialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +80,9 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
         switch (v.getId()){
             case R.id.btn_logout:
                 dialog=show("是否退出登录？",R.layout.dialog_layout_login);
+                SharedPreferencesUtil spu=new SharedPreferencesUtil();
+                String sessionId =spu.readSessionId("sessionId",this);
+                okHttpUtil.logout(HttpUtil.URL_LOGOUT,sessionId,this);
                 break;
             case R.id.ig_return_title:
                 finish();
@@ -118,4 +129,13 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
         return dialog;
     }
 
+    @Override
+    public void onFailure(Call call, IOException e) {
+
+    }
+
+    @Override
+    public void onResponse(Call call, Response response) throws IOException {
+        System.out.println(TAG+response.body().string());
+    }
 }

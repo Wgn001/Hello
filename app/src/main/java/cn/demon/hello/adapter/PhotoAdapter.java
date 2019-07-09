@@ -24,7 +24,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private List<Photo>  photoList;
     private Context context;
-    private Dialog dialog=null;
     private static final int item_type_header=1;
     private static final int item_type_content=2;
 

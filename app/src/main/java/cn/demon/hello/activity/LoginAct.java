@@ -1,6 +1,7 @@
 package cn.demon.hello.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,6 +22,10 @@ import java.io.IOException;
 import cn.demon.hello.MainActivity;
 import cn.demon.hello.R;
 import cn.demon.hello.Util.HttpUtil;
+import cn.demon.hello.Util.JsonUtil;
+import cn.demon.hello.Util.SharedPreferencesUtil;
+import cn.demon.hello.Util.okHttpUtil;
+import cn.demon.hello.bean.Login;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -37,7 +42,7 @@ import okhttp3.Response;
     private Button btn_new_user, btn_ret_password_login, btn_login;
     private EditText edt_phone, edt_password;
     private ImageButton ib_clear;
-
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +55,6 @@ import okhttp3.Response;
         setContentView(R.layout.layout_login);
 
         initView();
-
     }
 
     /**
@@ -64,14 +68,12 @@ import okhttp3.Response;
         edt_password=findViewById(R.id.edt_password);
         ib_clear=findViewById(R.id.ib_clear);
 
-
         btn_login.setOnClickListener(this);
         btn_ret_password_login.setOnClickListener(this);
         btn_new_user.setOnClickListener(this);
         ib_clear.setOnClickListener(this);
         edt_password.addTextChangedListener(this);
         edt_phone.addTextChangedListener(this);
-
     }
 
     @Override
@@ -82,18 +84,19 @@ import okhttp3.Response;
                 startActivity(intent);
                 break;
             case R.id.btn_ret_password_login:
-                String phone=edt_phone.getText().toString().trim();
-                String Pwd=edt_password.getText().toString().trim();
-                if(!phone.isEmpty()&&!Pwd.isEmpty()){
-                }
+                Intent intent1 = new Intent(LoginAct.this, RetPasswordAct.class);
+                startActivity(intent1);
                 break;
             case R.id.ib_clear:
                 edt_phone.setText("");
                 break;
             case R.id.btn_login:
-                Intent intent2 = new Intent(LoginAct.this, MainActivity.class);
-                startActivity(intent2);
-                finish();
+                String phone=edt_phone.getText().toString().trim();
+                String Pwd=edt_password.getText().toString().trim();
+
+                if(!phone.isEmpty()&&!Pwd.isEmpty()){
+                    okHttpUtil.login(HttpUtil.URL_LOGIN,phone,Pwd,this);
+                }
                 break;
         }
     }
@@ -129,14 +132,29 @@ import okhttp3.Response;
 
     @Override
     public void onFailure(Call call, IOException e) {
-
+        System.out.println("LoginAct" + "Failure");
     }
 
     @Override
     public void onResponse(Call call, Response response) throws IOException {
-        String login=response.body().string();
-//        Intent intent = new Intent(LoginAct.this, RetPasswordAct.class);
-//        startActivity(intent);
-        System.out.println("LoginAct"+login);
+
+        String loginData = response.body().string();
+        Login login=JsonUtil.parseJson(loginData, Login.class);
+
+        if(login.desc.equals("登陆成功")){
+
+            Intent intent=new Intent(this,MainActivity.class);
+            Bundle bundle=new Bundle();
+
+            bundle.putSerializable("login",login);
+            intent.putExtra("intent_login",bundle);
+            SharedPreferencesUtil spu=new SharedPreferencesUtil();
+            spu.saveSessionId("sessionId",login.data.sessionId,this);
+
+            System.out.println("LoginAct"+spu.readSessionId("sessionId",this));
+            startActivity(intent);
+        }
+
+        System.out.println("LoginAct"+login.toString());
     }
 }

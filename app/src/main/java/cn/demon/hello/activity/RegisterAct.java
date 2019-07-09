@@ -12,7 +12,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.IOException;
+
 import cn.demon.hello.R;
+import cn.demon.hello.Util.HttpUtil;
+import cn.demon.hello.Util.okHttpUtil;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  *
@@ -20,10 +27,12 @@ import cn.demon.hello.R;
  * @author Gn W
  * @date 19.7.2
  */
-public class RegisterAct extends AppCompatActivity implements View.OnClickListener, TextWatcher {
+public class RegisterAct extends AppCompatActivity implements View.OnClickListener, TextWatcher, Callback {
 
-    private Button btn_ret_password_register,btn_login_register,btn_register;
-    private EditText edt_username_register,edt_phone_register,edt_verification_regsiter,edt_password_register;
+    private static final String TAG = "RegisterAct";
+    
+    private Button btn_ret_password_register,btn_login_register,btn_register,btn_send_code;
+    private EditText edt_nick_register,edt_phone_register,edt_verification_regsiter,edt_password_register;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,17 +55,20 @@ public class RegisterAct extends AppCompatActivity implements View.OnClickListen
         btn_ret_password_register=findViewById(R.id.btn_ret_password_register);
         btn_login_register=findViewById(R.id.btn_login_register);
         btn_register=findViewById(R.id.btn_register);
-        edt_username_register=findViewById(R.id.edt_username_register);
+        edt_nick_register=findViewById(R.id.edt_nick_register);
         edt_password_register=findViewById(R.id.edt_password_register);
         edt_phone_register=findViewById(R.id.edt_phone_register);
         edt_verification_regsiter=findViewById(R.id.edt_verification_regsiter);
+        btn_send_code=findViewById(R.id.btn_send_code);
 
-        edt_username_register.addTextChangedListener(this);
+        edt_nick_register.addTextChangedListener(this);
         edt_password_register.addTextChangedListener(this);
         edt_phone_register.addTextChangedListener(this);
         edt_verification_regsiter.addTextChangedListener(this);
+        btn_send_code.setOnClickListener(this);
         btn_ret_password_register.setOnClickListener(this);
         btn_login_register.setOnClickListener(this);
+        btn_register.setOnClickListener(this);
     }
 
 
@@ -72,6 +84,18 @@ public class RegisterAct extends AppCompatActivity implements View.OnClickListen
                 startActivity(intent1);
                 break;
             case R.id.btn_register:
+                String mobile=edt_phone_register.getText().toString().trim();
+                String password=edt_password_register.getText().toString().trim();
+                String code=edt_verification_regsiter.getText().toString().trim();
+                String nick=edt_nick_register.getText().toString().trim();
+                System.out.println(TAG+mobile+password+code+nick);
+                if(!mobile.isEmpty() && !password.isEmpty() && !code.isEmpty() && !nick.isEmpty()){
+                    okHttpUtil.register(HttpUtil.URL_REGISTER,mobile,password,code,nick,this);
+                }
+                break;
+            case R.id.btn_send_code:
+                String phone =edt_phone_register.getText().toString().trim();
+                okHttpUtil.getCode(HttpUtil.URL_CODE,phone,"0",this);
                 break;
         }
     }
@@ -90,7 +114,7 @@ public class RegisterAct extends AppCompatActivity implements View.OnClickListen
     @Override
     public void afterTextChanged(Editable s) {
 
-        String username=edt_username_register.getText().toString().trim();
+        String username=edt_nick_register.getText().toString().trim();
         String password=edt_password_register.getText().toString().trim();
         String phone=edt_phone_register.getText().toString().trim();
         String verification=edt_verification_regsiter.getText().toString().trim();
@@ -102,5 +126,16 @@ public class RegisterAct extends AppCompatActivity implements View.OnClickListen
             btn_register.setBackgroundResource(R.drawable.circular_5_ccccc);
         }
 
+    }
+
+    @Override
+    public void onFailure(Call call, IOException e) {
+
+    }
+
+    @Override
+    public void onResponse(Call call, Response response) throws IOException {
+        String register=response.body().string();
+        System.out.println("RegisterAct"+register);
     }
 }
