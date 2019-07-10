@@ -2,6 +2,7 @@ package cn.demon.hello.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -79,7 +80,7 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_logout:
-                dialog=show("是否退出登录？",R.layout.dialog_layout_login);
+                dialog=showLogout(R.layout.dialog_logout);
                 SharedPreferencesUtil spu=new SharedPreferencesUtil();
                 String sessionId =spu.readSessionId("sessionId",this);
                 okHttpUtil.logout(HttpUtil.URL_LOGOUT,sessionId,this);
@@ -106,7 +107,15 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
                 dialog.dismiss();
                 break;
             case R.id.btn_dialog_confirm:
+                show(this);
                 dialog.dismiss();
+                break;
+            case R.id.btn_logout_cancal:
+                dialog.dismiss();
+                break;
+            case R.id.btn_logout_confrim:
+                dialog.dismiss();
+
                 break;
         }
     }
@@ -128,6 +137,41 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
         dialog.show();
         return dialog;
     }
+    public Dialog showLogout(int layout){
+        Button btn_logout_cancal,btn_logout_confrim;
+        Dialog dialog=new Dialog(this);
+        View view=LayoutInflater.from(this).inflate(layout,null);
+        dialog.setContentView(view);
+        btn_logout_cancal=view.findViewById(R.id.btn_logout_cancal);
+        btn_logout_confrim=view.findViewById(R.id.btn_logout_confrim);
+        btn_logout_cancal.setOnClickListener(this);
+        btn_logout_confrim.setOnClickListener(this);
+        Window window=dialog.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.show();
+        return dialog;
+    }
+
+    public void show(Context context){
+        final Dialog dialog=new Dialog(context,R.style.ActionSheetDialogStyle);
+        View view=LayoutInflater.from(context).inflate(R.layout.dialog_clear_cache,null);
+        Button button=view.findViewById(R.id.btn_clear_ok);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dialog!=null){
+                    dialog.dismiss();
+                }
+            }
+        });
+        dialog.setContentView(view);
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialog.show();
+    }
+
+
 
     @Override
     public void onFailure(Call call, IOException e) {

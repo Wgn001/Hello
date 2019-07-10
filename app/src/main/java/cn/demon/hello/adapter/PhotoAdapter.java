@@ -2,10 +2,10 @@ package cn.demon.hello.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +18,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import cn.demon.hello.R;
+import cn.demon.hello.activity.PhotoBgAct;
 import cn.demon.hello.bean.Photo;
 
 public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -134,8 +135,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
-    public Dialog showDialog(Context context){
-        Dialog dialog=new Dialog(context);
+    public Dialog showDialog(final Context context){
+        final Dialog dialog=new Dialog(context);
         Button button=new Button(context);
         button.setTextColor(Color.BLACK);
         button.setText("更换我的封面");
@@ -149,6 +150,15 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         Window window =dialog.getWindow();
         window.setBackgroundDrawableResource(R.drawable.circular_10_ffffff);
         window.setAttributes(layoutParams);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, PhotoBgAct.class);
+                context.startActivity(intent);
+                dialog.dismiss();
+            }
+        });
         return dialog;
     }
 

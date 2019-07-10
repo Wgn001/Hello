@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.demon.hello">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.NewMsgAct"></activity>
+        <activity android:name=".activity.PhotoBgAct"></activity>
+        <activity android:name=".activity.NewMsgAct" />
         <activity android:name=".activity.BlackListAct" />
-        <activity android:name=".activity.MyphotoAct"
-            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".activity.MyphotoAct"
+            android:theme="@style/AppTheme" />
         <activity android:name=".activity.MenuAct" />
         <activity android:name=".activity.AboutAct" />
         <activity android:name=".activity.PrivacyAct" />

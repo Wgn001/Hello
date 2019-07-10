@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:layout_gravity="bottom">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="拍照"
+        android:textSize="18sp"
+        android:textColor="@color/colorBlack"
+        android:background="@null"/>
+    <View
+        style="@style/MyLineStyle"
+        android:background="@color/colorEEEEEE"
+        android:layout_marginHorizontal="10dp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="从手机相册中选择"
+        android:textSize="18sp"
+        android:textColor="@color/colorBlack"
+        android:background="@null"/>
+
+</LinearLayout>

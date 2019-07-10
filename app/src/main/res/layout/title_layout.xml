@@ -46,6 +46,7 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="15dp"
+                android:textColor="@color/color999999"
                 android:text="保存" />
 
         </RelativeLayout>

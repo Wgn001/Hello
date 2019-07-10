@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:layout_gravity="bottom">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="缓存清除成功"
+        android:textSize="18sp"
+        android:textColor="@color/colorBlack"
+        android:background="@null"/>
+    <View
+        style="@style/MyLineStyle"
+        android:background="@color/colorEEEEEE"
+        android:layout_marginHorizontal="10dp"
+        />
+    <Button
+        android:id="@+id/btn_clear_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确认"
+        android:textSize="18sp"
+        android:textColor="@color/color0CBA7E"
+        android:background="@null"
+        />
+
+</LinearLayout>

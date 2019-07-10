@@ -24,7 +24,7 @@ public class StartPageAct extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(2000);
+                    sleep(1000);
                     Intent intent = new Intent(StartPageAct.this,LoginAct.class);
                     startActivity(intent);
                     finish();
