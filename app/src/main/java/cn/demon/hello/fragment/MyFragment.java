@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import cn.demon.hello.MainActivity;
 import cn.demon.hello.R;
+import cn.demon.hello.Util.JsonUtil;
+import cn.demon.hello.Util.SharedPreferencesUtil;
 import cn.demon.hello.activity.AboutAct;
 import cn.demon.hello.activity.MenuAct;
 import cn.demon.hello.activity.MyphotoAct;
@@ -31,37 +33,38 @@ public class MyFragment extends Fragment implements View.OnClickListener{
     private TextView tv_nick,tv_id;
     Intent intent;
     MainActivity mainActivity;
-    static Login login;
-    Bundle args;
-
-    public static MyFragment newInstance(Bundle args){
-        MyFragment f=new MyFragment();
-        f.setArguments(args);
-        return f;
-    }
+    SharedPreferencesUtil spu = new SharedPreferencesUtil();
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.myfragment, container, false);
-
         initView(view);
         mainActivity=(MainActivity) getActivity();
         return view;
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        String login_data=spu.read("login_data",getActivity());
+        if(!login_data.isEmpty()){
+            Login login= JsonUtil.parseJson(login_data,Login.class);
+            tv_nick.setText(login.data.nick);
+            tv_id.setText(login.data.id+"");
+        }
+    }
 
     private void initView(View view) {
-        rl_menu=view.findViewById(R.id.rl_menu);
-        rl_photo=view.findViewById(R.id.rl_photo);
-        rl_zh=view.findViewById(R.id.rl_zh);
-        rl_suggest=view.findViewById(R.id.rl_suggest);
-        rl_about=view.findViewById(R.id.rl_about);
-        ig_change_icon=view.findViewById(R.id.ig_change_icon);
-        tv_nick=view.findViewById(R.id.tv_nick);
-        tv_id=view.findViewById(R.id.tv_id);
+        rl_menu = view.findViewById(R.id.rl_menu);
+        rl_photo = view.findViewById(R.id.rl_photo);
+        rl_zh = view.findViewById(R.id.rl_zh);
+        rl_suggest = view.findViewById(R.id.rl_suggest);
+        rl_about = view.findViewById(R.id.rl_about);
+        ig_change_icon = view.findViewById(R.id.ig_change_icon);
+        tv_nick = view.findViewById(R.id.tv_nick);
+        tv_id = view.findViewById(R.id.tv_id);
 
         ig_change_icon.setOnClickListener(this);
         rl_menu.setOnClickListener(this);
@@ -70,12 +73,6 @@ public class MyFragment extends Fragment implements View.OnClickListener{
         rl_suggest.setOnClickListener(this);
         rl_about.setOnClickListener(this);
 
-        args=getArguments();
-        if(args!=null){
-            login =(Login)args.getSerializable("login");
-            tv_nick.setText(login.data.nick);
-            tv_id.setText(login.data.id+"");
-        }
     }
 
     @Override

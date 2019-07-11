@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -136,6 +137,6 @@ public class RegisterAct extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onResponse(Call call, Response response) throws IOException {
         String register=response.body().string();
-        System.out.println("RegisterAct"+register);
+        Log.e(TAG,register);
     }
 }

@@ -1,13 +1,12 @@
 package cn.demon.hello.activity;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +17,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.JsonObject;
+
 import java.io.IOException;
 import java.util.Set;
 
 import cn.demon.hello.R;
 import cn.demon.hello.Util.HttpUtil;
+import cn.demon.hello.Util.JsonUtil;
 import cn.demon.hello.Util.SharedPreferencesUtil;
 import cn.demon.hello.Util.okHttpUtil;
+import cn.demon.hello.bean.Login;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -38,6 +41,7 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
     private RelativeLayout rl_change_password, rl_privacy, rl_clear_buffer,rl_new_message;
     private ImageView ig_return_title;
     private Dialog dialog;
+    SharedPreferencesUtil spu=new SharedPreferencesUtil();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,9 +85,6 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
         switch (v.getId()){
             case R.id.btn_logout:
                 dialog=showLogout(R.layout.dialog_logout);
-                SharedPreferencesUtil spu=new SharedPreferencesUtil();
-                String sessionId =spu.readSessionId("sessionId",this);
-                okHttpUtil.logout(HttpUtil.URL_LOGOUT,sessionId,this);
                 break;
             case R.id.ig_return_title:
                 finish();
@@ -115,6 +116,17 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.btn_logout_confrim:
                 dialog.dismiss();
+                //                  退出登录
+                String login_json =spu.read("login_data",this);
+                if(login_json!=null){
+                    Login loginData=JsonUtil.parseJson(login_json, Login.class);
+                    if(loginData.code==1){
+                        okHttpUtil.logout(HttpUtil.URL_LOGOUT,loginData.data.sessionId,this);
+                        finish();
+                    }
+                }
+
+
 
                 break;
         }
@@ -152,7 +164,7 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
         return dialog;
     }
 
-    public void show(Context context){
+    public void show(final Context context){
         final Dialog dialog=new Dialog(context,R.style.ActionSheetDialogStyle);
         View view=LayoutInflater.from(context).inflate(R.layout.dialog_clear_cache,null);
         Button button=view.findViewById(R.id.btn_clear_ok);
@@ -180,6 +192,13 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onResponse(Call call, Response response) throws IOException {
-        System.out.println(TAG+response.body().string());
+
+        Login login=JsonUtil.parseJson(response.body().string(),Login.class);
+        if(login.code==1){
+            spu.save("login_data","",this);
+            Intent intent=new Intent(this,LoginAct.class);
+            startActivity(intent);
+        }
+
     }
 }

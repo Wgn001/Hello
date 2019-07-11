@@ -5,11 +5,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.WindowManager;
 
+import cn.demon.hello.MainActivity;
 import cn.demon.hello.R;
+import cn.demon.hello.Util.SharedPreferencesUtil;
 
 public class StartPageAct extends AppCompatActivity {
+    private static final String TAG = "StartPageAct";
+
+    SharedPreferencesUtil spu=new SharedPreferencesUtil();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +31,15 @@ public class StartPageAct extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(1000);
-                    Intent intent = new Intent(StartPageAct.this,LoginAct.class);
-                    startActivity(intent);
+                    String loginData = spu.read("login_data", getApplication());
+                    Log.e(TAG,loginData.toString());
+                    if (loginData.trim() == "") {
+                        Intent intent = new Intent(StartPageAct.this, LoginAct.class);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(StartPageAct.this, MainActivity.class);
+                        startActivity(intent);
+                    }
                     finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();

@@ -65,9 +65,9 @@ public  class okHttpUtil {
     /**
      * 找回密码
      * @param url
-     * @param mobile
-     * @param password
-     * @param code
+     * @param mobile  手机号
+     * @param password     密码
+     * @param code      验证码
      * @param callback
      */
     public static void findPwd(String url, String mobile,String password,String code, Callback callback){

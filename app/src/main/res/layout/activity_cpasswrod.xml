@@ -33,7 +33,7 @@
                 android:textSize="14sp"
                 android:layout_marginLeft="15dp"/>
             <EditText
-                android:id="@+id/edt_oldpassword"
+                android:id="@+id/edt_oldPwd"
                 android:layout_toRightOf="@+id/tv_cpassword_oldpass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,6 +69,7 @@
                 android:layout_marginLeft="15dp"
                 />
             <EditText
+                android:id="@+id/edt_newPwd"
                 android:layout_toRightOf="@+id/tv_cpassword_newpass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,6 +94,7 @@
                 android:textSize="14sp"
                 android:layout_marginLeft="15dp"/>
             <EditText
+                android:id="@+id/edt_confirm_Pwd"
                 android:layout_toRightOf="@+id/tv_cpassword_confirmpass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

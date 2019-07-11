@@ -92,14 +92,14 @@ import okhttp3.Response;
                 break;
             case R.id.btn_login:
 
-                Intent intent2=new Intent(this,MainActivity.class);
-                startActivity(intent2);
-//                String phone=edt_phone.getText().toString().trim();
-//                String Pwd=edt_password.getText().toString().trim();
-//
-//                if(!phone.isEmpty()&&!Pwd.isEmpty()){
-//                    okHttpUtil.login(HttpUtil.URL_LOGIN,phone,Pwd,this);
-//                }
+//                Intent intent2=new Intent(this,MainActivity.class);
+//                startActivity(intent2);
+                String phone=edt_phone.getText().toString().trim();
+                String Pwd=edt_password.getText().toString().trim();
+
+                if(!phone.isEmpty()&&!Pwd.isEmpty()){
+                    okHttpUtil.login(HttpUtil.URL_LOGIN,phone,Pwd,this);
+                }
                 break;
         }
     }
@@ -141,23 +141,16 @@ import okhttp3.Response;
     @Override
     public void onResponse(Call call, Response response) throws IOException {
 
-//        String loginData = response.body().string();
-//        Login login=JsonUtil.parseJson(loginData, Login.class);
-//
-//        if(login.desc.equals("登陆成功")){
-//
-//            Intent intent=new Intent(this,MainActivity.class);
-//            Bundle bundle=new Bundle();
-//
-//            bundle.putSerializable("login",login);
-//            intent.putExtra("intent_login",bundle);
-//            SharedPreferencesUtil spu=new SharedPreferencesUtil();
-//            spu.saveSessionId("sessionId",login.data.sessionId,this);
-//
-//            System.out.println("LoginAct"+spu.readSessionId("sessionId",this));
-//            startActivity(intent);
-//        }
-//
-//        System.out.println("LoginAct"+login.toString());
+        String loginData = response.body().string();
+        Login login=JsonUtil.parseJson(loginData, Login.class);
+
+        if(login.desc.equals("登陆成功")){
+            Intent intent=new Intent(this,MainActivity.class);
+            SharedPreferencesUtil spu=new SharedPreferencesUtil();
+            spu.save("login_data",loginData,this);
+            startActivity(intent);
+            Log.e(TAG,spu.read("login_data",this));
+            finish();
+        }
     }
 }

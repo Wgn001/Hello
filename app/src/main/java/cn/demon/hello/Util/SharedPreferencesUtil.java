@@ -8,13 +8,13 @@ public class SharedPreferencesUtil {
     public SharedPreferences sharedPreferences;
     public SharedPreferences.Editor editor;
 
-    public  void saveSessionId(String key,String sessionId, Context context){
+    public  void save(String key,String login__json, Context context){
         editor=context.getSharedPreferences("data" ,Context.MODE_PRIVATE).edit();
-        editor.putString(key,sessionId);
+        editor.putString(key,login__json);
         editor.apply();
     }
 
-    public String readSessionId(String key,Context context){
+    public String read(String key,Context context){
         sharedPreferences=context.getSharedPreferences("data",Context.MODE_PRIVATE);
         return sharedPreferences.getString(key,"");
     }

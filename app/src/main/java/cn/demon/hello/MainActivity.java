@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentList.add(new MessageFragment());
             fragmentList.add(new LinkFragment());
             fragmentList.add(new FindFragment());
-            fragmentList.add(MyFragment.newInstance(getIntent().getBundleExtra("intent_login")));
+            fragmentList.add(new MyFragment());
     }
 
     /**
