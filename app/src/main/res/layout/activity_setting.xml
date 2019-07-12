@@ -5,12 +5,45 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.SettingAct"
-    android:background="@color/colorEEEEEE">
+    android:background="@color/colorF8F8F8">
 
-    <include layout="@layout/title_layout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:background="@drawable/my_top_bg">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7">
+
+            <ImageView
+                android:id="@+id/ig_return_title"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/back"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
+                android:scaleType="center"
+                />
+            <TextView
+                android:id="@+id/tv_title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="账号设置"
+                android:textSize="17sp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/colorWhite"
+                android:gravity="center"
+                />
+        </RelativeLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -48,7 +81,8 @@
             </RelativeLayout>
             <View
                 style="@style/MyLineStyle"
-                android:background="@color/colorEEEEEE"/>
+                android:background="@color/colorEEEEEE"
+                android:layout_marginHorizontal="10dp"/>
 
             <RelativeLayout
                 android:id="@+id/rl_privacy"
@@ -75,7 +109,8 @@
             </RelativeLayout>
             <View
                 style="@style/MyLineStyle"
-                android:background="@color/colorEEEEEE"/>
+                android:background="@color/colorEEEEEE"
+                android:layout_marginHorizontal="10dp"/>
 
             <RelativeLayout
                 android:id="@+id/rl_new_message"
@@ -96,12 +131,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/con_more"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    />
 
             </RelativeLayout>
-            <View
-                style="@style/MyLineStyle"
-                android:background="@color/colorEEEEEE"/>
+
 
         </LinearLayout>
 
@@ -135,23 +169,15 @@
                     android:layout_alignParentRight="true"
                     />
             </RelativeLayout>
-            <View
-                style="@style/MyLineStyle"
-                android:background="@color/colorEEEEEE"/>
-
-
-
 
         </LinearLayout>
-
-
         <Button
             android:id="@+id/btn_logout"
             android:textColor="@color/colorFF6767"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="43dp"
-            android:background="@color/color999999"
+            android:background="@color/colorEEEEEE"
             android:text="退出登录"
             android:stateListAnimator="@null"/>
     </LinearLayout>

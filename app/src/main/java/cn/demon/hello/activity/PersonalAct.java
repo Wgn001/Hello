@@ -2,7 +2,6 @@ package cn.demon.hello.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import cn.demon.hello.R;
 

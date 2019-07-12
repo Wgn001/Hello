@@ -4,7 +4,7 @@
     android:background="@color/colorWhite"
     android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -15,7 +15,6 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="0.3"/>
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -28,29 +27,35 @@
                 android:src="@drawable/back"
                 android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"
-                android:scaleType="center"
-                />
+                android:scaleType="center"/>
+
             <TextView
-                android:id="@+id/tv_title_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="昵称修改"
+                android:text="朋友圈"
                 android:textSize="17sp"
                 android:layout_centerInParent="true"
                 android:textColor="@color/colorWhite"
-                android:gravity="center"
-                />
-            <TextView
+                android:gravity="center" />
+
+            <ImageView
                 android:id="@+id/tv_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="15dp"
-                android:textColor="@color/color999999"
-                android:text="保存" />
-
+                android:src="@drawable/pyq_nav_ic"
+                android:layout_centerInParent="true" />
         </RelativeLayout>
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:orientation="vertical">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </LinearLayout>

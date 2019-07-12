@@ -29,7 +29,6 @@ public class MenuAct extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void initView() {
-        tv_save=findViewById(R.id.tv_save);
         tv_title_name=findViewById(R.id.tv_title_name);
         ig_return_title=findViewById(R.id.ig_return_title);
         rl_lottery=findViewById(R.id.rl_lottery);
@@ -39,8 +38,6 @@ public class MenuAct extends AppCompatActivity implements View.OnClickListener {
         rl_lottery.setOnClickListener(this);
         rl_play.setOnClickListener(this);
 
-        tv_save.setVisibility(View.INVISIBLE);
-        tv_title_name.setText("菜单");
     }
 
     @Override

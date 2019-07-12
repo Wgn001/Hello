@@ -1,5 +1,6 @@
 package cn.demon.hello.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import java.util.List;
 
 import cn.demon.hello.MainActivity;
 import cn.demon.hello.R;
+import cn.demon.hello.activity.AddFriendAct;
 import cn.demon.hello.adapter.CityAdapter;
 import cn.demon.hello.bean.CityBean;
 import cn.demon.hello.suspension.SuspensionDecoration;
@@ -33,6 +36,8 @@ public class LinkFragment extends Fragment {
     private List<CityBean> mDatas = new ArrayList<>();
     private SuspensionDecoration mDecoration;
     MainActivity mainActivity;
+    private ImageView ig_add_friends;
+
     /**
      * 右侧边栏导航区域
      */
@@ -50,6 +55,15 @@ public class LinkFragment extends Fragment {
         mainActivity=(MainActivity) getActivity();
         mRv = view.findViewById(R.id.rv_linkman);
         mRv.setLayoutManager(mManager = new LinearLayoutManager(mainActivity));
+//      添加好友
+        ig_add_friends=view.findViewById(R.id.ig_add_friends);
+        ig_add_friends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mainActivity, AddFriendAct.class);
+                startActivity(intent);
+            }
+        });
 
         mAdapter = new CityAdapter(container.getContext(), mDatas);
         mRv.setAdapter(mAdapter);
@@ -83,13 +97,13 @@ public class LinkFragment extends Fragment {
                 mDatas = new ArrayList<>();
                 //微信的头部 也是可以右侧IndexBar导航索引的，
                 // 但是它不需要被ItemDecoration设一个标题titile
-                mDatas.add((CityBean) new CityBean("新的朋友").setTop(true).setBaseIndexTag(INDEX_STRING_TOP));
-                mDatas.add((CityBean) new CityBean("群聊").setTop(true).setBaseIndexTag(INDEX_STRING_TOP));
-                mDatas.add((CityBean) new CityBean("标签").setTop(true).setBaseIndexTag(INDEX_STRING_TOP));
-                mDatas.add((CityBean) new CityBean("公众号").setTop(true).setBaseIndexTag(INDEX_STRING_TOP));
+                mDatas.add((CityBean) new CityBean("新的朋友",R.drawable.contact_newfrend).setTop(true).setBaseIndexTag(INDEX_STRING_TOP));
+                mDatas.add((CityBean) new CityBean("群组",R.drawable.ql_ic).setTop(true).setBaseIndexTag(INDEX_STRING_TOP));
+                mDatas.add((CityBean) new CityBean("用户自己",R.drawable.new_user_pic).setTop(true).setBaseIndexTag(INDEX_STRING_TOP));
                 for (int i = 0; i < data.length; i++) {
                     CityBean cityBean = new CityBean();
                     cityBean.setCity(data[i]);//设置城市名称
+                    cityBean.setImg(R.drawable.new_user_pic);
                     mDatas.add(cityBean);
                 }
                 mAdapter.setDatas(mDatas);

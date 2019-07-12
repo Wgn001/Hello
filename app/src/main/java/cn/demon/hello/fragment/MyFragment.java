@@ -16,8 +16,10 @@ import android.widget.TextView;
 
 import cn.demon.hello.MainActivity;
 import cn.demon.hello.R;
+import cn.demon.hello.Util.HttpUtil;
 import cn.demon.hello.Util.JsonUtil;
 import cn.demon.hello.Util.SharedPreferencesUtil;
+import cn.demon.hello.Util.okHttpUtil;
 import cn.demon.hello.activity.AboutAct;
 import cn.demon.hello.activity.MenuAct;
 import cn.demon.hello.activity.MyphotoAct;

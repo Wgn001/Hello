@@ -18,7 +18,7 @@
 
     <View style="@style/MyLineStyle"
         android:layout_marginHorizontal="10dp"
-        android:background="@color/color999999"/>
+        android:background="@color/colorE5E5E5"/>
     <Button
         android:id="@+id/btn_select_photo"
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
 
     <View style="@style/MyLineStyle"
         android:layout_marginHorizontal="10dp"
-        android:background="@color/color999999"/>
+        android:background="@color/colorE5E5E5"/>
 
     <Button
         android:id="@+id/btn_cancel"

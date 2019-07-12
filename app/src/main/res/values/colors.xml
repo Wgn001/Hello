@@ -15,5 +15,8 @@
     <color name="color666666">#666666</color>
     <color name="colorF8F8F8">#F8F8F8</color>
     <color name="partTranslucent">#39000000</color>
+    <color name="colorFFFFFF">#FFFFFF</color>
+    <color name="colorE5E5E5">#E5E5E5</color>
+    <color name="color888888">#888888</color>
 </resources>
 

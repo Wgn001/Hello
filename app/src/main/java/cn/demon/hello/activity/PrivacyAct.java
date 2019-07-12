@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import cn.demon.hello.R;
 
 public class PrivacyAct extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String TAG = "PrivacyAct";
     private TextView tv_save,tv_title_name;
     private ImageView ig_return_title;
     private RelativeLayout rl_blacklist;
@@ -49,6 +52,7 @@ public class PrivacyAct extends AppCompatActivity implements View.OnClickListene
         switch (v.getId()) {
             case R.id.ig_return_title:
                 finish();
+                Log.e(TAG,"finish");
                 break;
             case R.id.rl_blacklist:
                 Intent intent=new Intent(PrivacyAct.this,BlackListAct.class);

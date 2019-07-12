@@ -39,7 +39,7 @@ public class CPasswrodAct extends AppCompatActivity implements View.OnClickListe
     private TextView tv_save, tv_title_name;
     private ImageView ig_cpassword;
     private EditText edt_oldPwd, edt_newPwd, edt_confirm_Pwd;
-    SharedPreferencesUtil spu=new SharedPreferencesUtil();
+    SharedPreferencesUtil spu = new SharedPreferencesUtil();
 
 
     @Override
@@ -72,9 +72,8 @@ public class CPasswrodAct extends AppCompatActivity implements View.OnClickListe
         edt_confirm_Pwd.setOnClickListener(this);
 
         edt_oldPwd.addTextChangedListener(this);
-        tv_save.setText("完成");
-        tv_title_name.setText("密码修改");
-
+        edt_newPwd.addTextChangedListener(this);
+        edt_confirm_Pwd.addTextChangedListener(this);
     }
 
     @Override
@@ -87,21 +86,21 @@ public class CPasswrodAct extends AppCompatActivity implements View.OnClickListe
                 edt_oldPwd.setText("");
                 break;
             case R.id.tv_save:
+
+                String login_data = spu.read("login_data", this);
+                String sessionId = "";
                 String oldPwd = edt_oldPwd.getText().toString().trim();
                 String newPwd = edt_newPwd.getText().toString().trim();
                 String confirmPwd = edt_confirm_Pwd.getText().toString().trim();
-                String login_data=spu.read("login_data",this);
-                String sessionId="";
-
-                if(login_data!=null){
-                        Login login=JsonUtil.parseJson(login_data,Login.class);
-                        Log.e(TAG,login.data.sessionId);
-                        sessionId=login.data.sessionId;
-                }
-                if(oldPwd.isEmpty()&&newPwd.isEmpty()&&confirmPwd.isEmpty()){
-                    Toast.makeText(this,"密码不能为空",Toast.LENGTH_SHORT).show();
-                }else{
-                    okHttpUtil.uodatePed(HttpUtil.URL_UpDatePwd,sessionId,oldPwd,newPwd,this);
+                if (login_data != null) {
+                    Login login = JsonUtil.parseJson(login_data, Login.class);
+                    Log.e(TAG, login.data.sessionId);
+                    sessionId = login.data.sessionId;
+                    if (newPwd.equals(confirmPwd)) {
+                        okHttpUtil.uodatePed(HttpUtil.URL_UpDatePwd, sessionId, oldPwd, newPwd, this);
+                    } else {
+                        Toast.makeText(this, "新密码不一致", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
         }
@@ -120,6 +119,10 @@ public class CPasswrodAct extends AppCompatActivity implements View.OnClickListe
     @Override
     public void afterTextChanged(Editable s) {
 
+        String oldPwd = edt_oldPwd.getText().toString().trim();
+        String newPwd = edt_newPwd.getText().toString().trim();
+        String confirmPwd = edt_confirm_Pwd.getText().toString().trim();
+
         if (!edt_oldPwd.getText().toString().trim().isEmpty()) {
             ig_cpassword.setVisibility(View.VISIBLE);
             tv_save.setTextColor(Color.WHITE);
@@ -127,6 +130,15 @@ public class CPasswrodAct extends AppCompatActivity implements View.OnClickListe
             ig_cpassword.setVisibility(View.INVISIBLE);
             tv_save.setTextColor(Color.GRAY);
         }
+        if (oldPwd.isEmpty() || newPwd.isEmpty() || confirmPwd.isEmpty()) {
+            tv_save.setTextColor(Color.GRAY);
+            tv_save.setEnabled(false);
+        } else {
+            tv_save.setTextColor(Color.WHITE);
+            tv_save.setEnabled(true);
+        }
+
+
     }
 
     @Override
@@ -136,13 +148,13 @@ public class CPasswrodAct extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onResponse(Call call, Response response) throws IOException {
-        String data=response.body().string();
-        Log.e(TAG,data);
-        if(!data.isEmpty()){
-            Login login=JsonUtil.parseJson(data,Login.class);
-            if(login.code==1){
-                spu.save("login_data",data,this);
-                Intent intent=new Intent(this,LoginAct.class);
+        String data = response.body().string();
+        Log.e(TAG, data);
+        if (!data.isEmpty()) {
+            Login login = JsonUtil.parseJson(data, Login.class);
+            if (login.code == 1) {
+                spu.save("login_data", data, this);
+                Intent intent = new Intent(this, LoginAct.class);
                 startActivity(intent);
             }
         }

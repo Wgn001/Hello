@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PhotoBgAct"></activity>
+        <activity android:name=".activity.FriendMesAct"></activity>
+        <activity android:name=".activity.AddFriendAct" />
+        <activity android:name=".activity.FriendsAct" />
+        <activity android:name=".activity.PhotoBgAct" />
         <activity android:name=".activity.NewMsgAct" />
         <activity android:name=".activity.BlackListAct" />
         <activity

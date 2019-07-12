@@ -8,13 +8,27 @@ package cn.demon.hello.bean;
 public class CityBean extends BaseIndexPinyinBean {
 
     private String city;//城市名字
+    private int img;    //头像
     private boolean isTop;//是否是最上面的 不需要被转化成拼音的
 
     public CityBean() {
     }
 
+    public CityBean(String city, int img) {
+        this.city = city;
+        this.img = img;
+    }
+
     public CityBean(String city) {
         this.city = city;
+    }
+
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
     }
 
     public String getCity() {

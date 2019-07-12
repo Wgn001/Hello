@@ -37,7 +37,7 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
     private static final String TAG = "SettingAct";
 
     private Button btn_logout;
-    private TextView tv_save, tv_title_name;
+    private TextView tv_title_name;
     private RelativeLayout rl_change_password, rl_privacy, rl_clear_buffer,rl_new_message;
     private ImageView ig_return_title;
     private Dialog dialog;
@@ -52,16 +52,11 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
 //            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
         setContentView(R.layout.activity_setting);
-
         initView();
-
-        tv_save.setVisibility(View.INVISIBLE);
-        tv_title_name.setText("账号设置");
     }
 
     private void initView() {
         btn_logout=findViewById(R.id.btn_logout);
-        tv_save=findViewById(R.id.tv_save);
         tv_title_name=findViewById(R.id.tv_title_name);
         rl_change_password=findViewById(R.id.rl_change_password);
         rl_privacy=findViewById(R.id.rl_privacy);
@@ -71,7 +66,6 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
 
 
         btn_logout.setOnClickListener(this);
-        tv_save.setOnClickListener(this);
         tv_title_name.setOnClickListener(this);
         rl_change_password.setOnClickListener(this);
         rl_privacy.setOnClickListener(this);
@@ -88,6 +82,7 @@ public class SettingAct extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.ig_return_title:
                 finish();
+                Log.e(TAG,"finish");
                 break;
             case R.id.rl_change_password:
                 Intent intent =new Intent(SettingAct.this,CPasswrodAct.class);

@@ -1,6 +1,9 @@
 package cn.demon.hello.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +11,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.List;
+
 import cn.demon.hello.R;
+import cn.demon.hello.activity.AddFriendAct;
+import cn.demon.hello.activity.FriendMesAct;
+import cn.demon.hello.activity.FriendsAct;
 import cn.demon.hello.bean.CityBean;
 
 /**
@@ -46,13 +54,19 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
     public void onBindViewHolder(final CityAdapter.ViewHolder holder, final int position) {
         final CityBean cityBean = mDatas.get(position);
         holder.tvCity.setText(cityBean.getCity());
+        holder.tvCity.setTextColor(Color.BLACK);
         holder.content.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "pos:" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, FriendMesAct.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("nick", cityBean.getCity());
+                bundle.putInt("icon", cityBean.getImg());
+                intent.putExtras(bundle);
+                mContext.startActivity(intent);
             }
         });
-        holder.avatar.setImageResource(R.drawable.new_user_pic);
+        holder.avatar.setImageResource(cityBean.getImg());
     }
 
     @Override
@@ -67,8 +81,8 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvCity = (TextView) itemView.findViewById(R.id.tvCity);
-            avatar = (ImageView) itemView.findViewById(R.id.ivAvatar);
+            tvCity = itemView.findViewById(R.id.tvCity);
+            avatar = itemView.findViewById(R.id.ivAvatar);
             content = itemView.findViewById(R.id.content);
         }
     }

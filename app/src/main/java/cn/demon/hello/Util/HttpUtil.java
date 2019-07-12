@@ -16,4 +16,6 @@ public class HttpUtil {
     public static String URL_LOGOUT = "http://47.107.81.81/bgt/api/account/logout";
     //修改密码
     public static String URL_UpDatePwd = "http://47.107.81.81/bgt/api/account/updatePwd";
+    //获取系统文本信息
+    public static String URL_CONTENT="http://47.107.81.81/bgt/api/content/get";
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.PersonalAct"
-    android:background="@color/colorEEEEEE">
+    android:background="@color/colorF8F8F8">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -90,7 +90,7 @@
         </RelativeLayout>
         <View
             style="@style/MyLineStyle"
-            android:background="@color/color999999"
+            android:background="@color/colorEEEEEE"
             android:layout_marginHorizontal="17dp"
             />
         <RelativeLayout
@@ -117,7 +117,7 @@
         </RelativeLayout>
         <View
             style="@style/MyLineStyle"
-            android:background="@color/color999999"
+            android:background="@color/colorEEEEEE"
             android:layout_marginHorizontal="17dp"/>
     </LinearLayout>
 

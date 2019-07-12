@@ -7,7 +7,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <include layout="@layout/main_title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FE5455">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="通讯录"
+                android:textSize="17sp"
+                android:textColor="#FFFFFF"
+                android:layout_centerHorizontal="true"/>
+            <ImageView
+                android:id="@+id/ig_add_friends"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/new_nav_join"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <SearchView
+            android:layout_marginTop="17dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:queryHint="请输入关键词..."
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/circular_15_88fffff" />
+    </LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,7 +54,7 @@
             android:background="@android:color/white">
         </android.support.v7.widget.RecyclerView>
 
-        <com.mcxtzhang.indexlib.IndexBar.widget.IndexBar
+        <cn.demon.hello.view.IndexBar
             android:id="@+id/indexBar"
             android:layout_width="24dp"
             android:layout_height="match_parent"
@@ -39,14 +74,6 @@
             android:visibility="gone"
             tools:text="A"
             tools:visibility="visible"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:onClick="updateDatas"
-            android:text="更新数据源"/>
-
     </FrameLayout>
 
 </LinearLayout>
