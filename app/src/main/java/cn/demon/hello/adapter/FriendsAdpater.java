@@ -3,7 +3,12 @@ package cn.demon.hello.adapter;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-
+/**
+ *
+ *朋友圈列表adapter
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class FriendsAdpater extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 

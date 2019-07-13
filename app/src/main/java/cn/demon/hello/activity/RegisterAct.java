@@ -24,7 +24,7 @@ import okhttp3.Response;
 
 /**
  *
- *注册
+ *注册Actiivty
  * @author Gn W
  * @date 19.7.2
  */

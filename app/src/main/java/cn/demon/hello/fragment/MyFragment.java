@@ -27,7 +27,12 @@ import cn.demon.hello.activity.PersonalAct;
 import cn.demon.hello.activity.SettingAct;
 import cn.demon.hello.bean.Login;
 
-
+/**
+ *
+ *我的
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class MyFragment extends Fragment implements View.OnClickListener{
 
     private RelativeLayout rl_menu,rl_photo,rl_zh,rl_suggest,rl_about;

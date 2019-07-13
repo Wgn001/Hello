@@ -11,7 +11,12 @@ import android.view.WindowManager;
 import cn.demon.hello.MainActivity;
 import cn.demon.hello.R;
 import cn.demon.hello.Util.SharedPreferencesUtil;
-
+/**
+ *
+ *起始页Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class StartPageAct extends AppCompatActivity {
     private static final String TAG = "StartPageAct";
 

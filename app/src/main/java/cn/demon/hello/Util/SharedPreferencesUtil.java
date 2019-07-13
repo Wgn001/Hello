@@ -2,7 +2,12 @@ package cn.demon.hello.Util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
+/**
+ *
+ *接口返回数据类
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class SharedPreferencesUtil {
 
     public SharedPreferences sharedPreferences;

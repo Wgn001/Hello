@@ -30,7 +30,12 @@ import cn.demon.hello.bean.Login;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-
+/**
+ *
+ *修改密码Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class CPasswrodAct extends AppCompatActivity implements View.OnClickListener, TextWatcher, Callback {
 
     private static final String TAG = "CPasswrodAct";

@@ -9,7 +9,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import cn.demon.hello.R;
-
+/**
+ *
+ *接收新消息Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class NewMsgAct extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "NewMsgAct";

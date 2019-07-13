@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 
 /**
  *
- *
+ *json数据解析工具类
  * @author Gn W
  * @date 19.7.9
  */

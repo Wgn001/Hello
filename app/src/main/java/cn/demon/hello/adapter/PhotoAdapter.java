@@ -20,7 +20,12 @@ import java.util.List;
 import cn.demon.hello.R;
 import cn.demon.hello.activity.PhotoBgAct;
 import cn.demon.hello.bean.Photo;
-
+/**
+ *
+ *个人相册adapter
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Photo>  photoList;

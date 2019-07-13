@@ -22,13 +22,19 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+
+/**
+ * 关于Activity
+ *
+ *
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class AboutAct extends AppCompatActivity implements View.OnClickListener, Callback {
     private static final String TAG = "AboutAct";
     private TextView tv_save,tv_title_name;
     private ImageView ig_return_title;
     private WebView webView;
-//    String data="<p>关于本港台<span style=\"white-space: normal;\">关于本港台</span><span style=\"white-space: normal;\">关于本港台</span><span style=\"white-space: normal;\">关于本港台</span><span style=\"white-space: normal;\">关于本港台</span><span style=\"white-space: normal;\">关于本港台<span style=\"white-space: normal;\">关于本港台</span><span style=\"white-space: normal;\">关于本港台</span><span style=\"white-space: normal;\">关于本港台</span><span style=\"white-space: normal;\">关于本港台</span><span style=\"white-space: normal;\">关于本港台</span><span style=\"white-space: normal;\">关于本港台关于本港台关于本港台关于本港台关于本港台关于本港台关于本港台关于本港台关于本港台关于本港台关于本港台</span></span></p>";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

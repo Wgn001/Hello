@@ -20,7 +20,12 @@ import cn.demon.hello.fragment.FindFragment;
 import cn.demon.hello.fragment.LinkFragment;
 import cn.demon.hello.fragment.MessageFragment;
 import cn.demon.hello.fragment.MyFragment;
-
+/**
+ *
+ *主界面
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private List<Fragment> fragmentList;

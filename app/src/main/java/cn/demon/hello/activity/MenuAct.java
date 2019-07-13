@@ -10,7 +10,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cn.demon.hello.R;
-
+/**
+ *
+ *菜单activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class MenuAct extends AppCompatActivity implements View.OnClickListener {
     private TextView tv_save,tv_title_name;
     private ImageView ig_return_title;

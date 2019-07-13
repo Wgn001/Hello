@@ -8,7 +8,12 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
 import cn.demon.hello.bean.Person;
-
+/**
+ *
+ *中文转拼音工具类
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class ChineseToPinyinUtil {
 
     public static Person getPingyin(Person person){

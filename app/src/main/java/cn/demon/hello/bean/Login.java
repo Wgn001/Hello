@@ -1,7 +1,12 @@
 package cn.demon.hello.bean;
 
 import java.io.Serializable;
-
+/**
+ *
+ *登录对象实体类
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public  class Login implements Serializable {
 
     public int code;

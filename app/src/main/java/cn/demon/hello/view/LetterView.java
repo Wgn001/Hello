@@ -7,7 +7,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+/**
+ *
+ *字母排序侧边栏View
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class LetterView extends LinearLayout {
     private Context mContext;
     private CharacterClickListener mListener;

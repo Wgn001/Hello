@@ -17,7 +17,12 @@ import cn.demon.hello.R;
 import cn.demon.hello.adapter.BlacklistAdapter;
 import cn.demon.hello.bean.Person;
 import cn.demon.hello.view.LetterView;
-
+/**
+ *
+ *黑名单列表Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class BlackListAct extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView ig_return_title;

@@ -12,7 +12,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cn.demon.hello.R;
-
+/**
+ *
+ *黑名单Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class PrivacyAct extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "PrivacyAct";

@@ -32,6 +32,12 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+/**
+ *
+ *设置Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class SettingAct extends AppCompatActivity implements View.OnClickListener, Callback {
 
     private static final String TAG = "SettingAct";

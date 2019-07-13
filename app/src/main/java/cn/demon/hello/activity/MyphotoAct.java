@@ -21,7 +21,12 @@ import java.util.logging.SimpleFormatter;
 import cn.demon.hello.R;
 import cn.demon.hello.adapter.PhotoAdapter;
 import cn.demon.hello.bean.Photo;
-
+/**
+ *
+ *我的相册Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class MyphotoAct extends AppCompatActivity implements View.OnClickListener {
     private ImageView ig_return_title;
     private RecyclerView recyclerView;

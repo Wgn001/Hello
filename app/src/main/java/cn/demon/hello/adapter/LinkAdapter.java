@@ -8,6 +8,12 @@ import android.view.ViewGroup;
 import java.util.List;
 import cn.demon.hello.bean.Person;
 
+/**
+ *
+ *通讯录列表adapter
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class LinkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @NonNull

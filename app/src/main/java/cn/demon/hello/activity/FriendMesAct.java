@@ -9,7 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import cn.demon.hello.R;
-
+/**
+ *
+ *查看好友信息Acitivity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class FriendMesAct extends AppCompatActivity implements View.OnClickListener {
     private ImageView ig_icon, ig_return_title;
     private TextView tv_nick, tv_phone;

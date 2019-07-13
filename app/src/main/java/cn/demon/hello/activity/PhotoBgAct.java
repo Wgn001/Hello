@@ -22,7 +22,12 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import cn.demon.hello.R;
-
+/**
+ *
+ *选择更改个人相册背景Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class PhotoBgAct extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView ig_photo_bg,ig_return_title;

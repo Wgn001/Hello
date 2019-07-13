@@ -2,6 +2,12 @@ package cn.demon.hello.bean;
 
 import java.io.Serializable;
 
+/**
+ *
+ *用户对象实体类
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class Person implements Serializable {
 
     private String name;

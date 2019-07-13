@@ -15,18 +15,29 @@ import cn.demon.hello.R;
 import cn.demon.hello.Util.ChineseToPinyinUtil;
 import cn.demon.hello.Util.ContactComparator;
 import cn.demon.hello.bean.Person;
-
+/**
+ *
+ *黑名单列表adapter
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class BlacklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = "BlacklistAdpter";
 
     private Context mContext;
-    private List<Person> personList; //联系人列表
-    private List<Person> pingyingList; //联系人列表（转成拼音）
-    private List<Person> resultList;    //最终列表
-    private List<String> characterList;  //字母列表
+    //联系人列表
+    private List<Person> personList;
+    //联系人列表（转成拼音）
+    private List<Person> pingyingList;
+    //最终列表
+    private List<Person> resultList;
+    //字母列表
+    private List<String> characterList;
 
-    private static int ITEM_TYPE_CONTACT = 1; //联系人条目
-    private static int ITEM_TYPE_CHARACTER = 2;   //字母条目
+    //联系人条目
+    private static int ITEM_TYPE_CONTACT = 1;
+    //字母条目
+    private static int ITEM_TYPE_CHARACTER = 2;
 
     public BlacklistAdapter(Context mContext, List<Person> personList) {
         this.mContext = mContext;

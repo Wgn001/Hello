@@ -21,8 +21,10 @@ import cn.demon.hello.activity.FriendsAct;
 import cn.demon.hello.bean.CityBean;
 
 /**
- * Created by zhangxutong .
- * Date: 16/08/28
+ *
+ *
+ * @author Gn.w
+ * @date 19.7.13
  */
 
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {

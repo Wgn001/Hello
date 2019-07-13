@@ -1,5 +1,11 @@
 package cn.demon.hello.Util;
 
+/**
+ *
+ *接口工具类
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class HttpUtil {
 
     //注册

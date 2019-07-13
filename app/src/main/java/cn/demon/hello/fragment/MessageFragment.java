@@ -10,6 +10,12 @@ import android.view.ViewGroup;
 
 import cn.demon.hello.R;
 
+/**
+ *
+ *消息
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class MessageFragment extends Fragment {
     @Nullable
     @Override

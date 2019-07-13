@@ -12,7 +12,12 @@ import android.widget.LinearLayout;
 
 import cn.demon.hello.R;
 import cn.demon.hello.activity.FriendsAct;
-
+/**
+ *
+ *发现
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class FindFragment extends Fragment {
     private LinearLayout ll_friends;
 

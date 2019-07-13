@@ -25,7 +25,12 @@ import cn.demon.hello.bean.CityBean;
 import cn.demon.hello.suspension.SuspensionDecoration;
 import cn.demon.hello.view.IndexBar;
 
-
+/**
+ *
+ *通讯录
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class LinkFragment extends Fragment {
 
     private static final String TAG = "zxt";

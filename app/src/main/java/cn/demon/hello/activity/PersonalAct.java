@@ -17,7 +17,12 @@ import android.widget.TextView;
 
 
 import cn.demon.hello.R;
-
+/**
+ *
+ * 个人信息Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class PersonalAct extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView ig_icon_personal, ig_xiugai,ig_return;

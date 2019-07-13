@@ -11,7 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import cn.demon.hello.R;
-
+/**
+ *
+ * 修改昵称Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class ChangeNameAct extends AppCompatActivity implements TextWatcher, View.OnClickListener {
 
     private TextView tv_save;

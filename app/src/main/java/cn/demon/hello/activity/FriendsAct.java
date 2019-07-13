@@ -1,16 +1,19 @@
 package cn.demon.hello.activity;
 
-import android.media.Image;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import cn.demon.hello.R;
-
+/**
+ *
+ *朋友圈Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class FriendsAct extends AppCompatActivity implements View.OnClickListener {
     private ImageView ig_return_title;
     @Override

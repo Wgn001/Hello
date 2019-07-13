@@ -8,7 +8,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import cn.demon.hello.R;
-
+/**
+ *
+ * 添加好友Activity
+ * @author Gn.w
+ * @date 19.7.13
+ */
 public class AddFriendAct extends AppCompatActivity implements View.OnClickListener {
     private ImageView ig_return_title;
     @Override
